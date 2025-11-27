@@ -44,8 +44,8 @@ namespace GamePrototype.Units
         }
 
         protected abstract uint CalculateAppliedDamage(uint damage);
-        
-        protected virtual void DamageReceiveHandler() { }
+
+        public virtual void DamageReceiveHandler() { }
         
         public abstract uint GetUnitDamage();
 

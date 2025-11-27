@@ -22,6 +22,13 @@ namespace GamePrototype.Units
             return BaseDamage;
         }
 
+        public override void DamageReceiveHandler() {
+            if (_equipment.TryGetValue(EquipSlot.Armour, out var item) && item is Armour armour)
+            {
+                armour.ReduceDurability(1);
+            }
+        }
+
         public override void HandleCombatComplete()
         {
             var items = Inventory.Items;
@@ -58,6 +65,7 @@ namespace GamePrototype.Units
             if (_equipment.TryGetValue(EquipSlot.Armour, out var item) && item is Armour armour) 
             {
                 damage -= (uint)(damage * (armour.Defence / 100f));
+                
             }
             return damage;
         }

@@ -12,7 +12,10 @@ namespace GamePrototype.Items.EquipItems
 
         public abstract EquipSlot Slot { get; }
 
-        protected EquipItem(uint maxDurability, string name) : base(name) => _maxDurability = maxDurability;
+        protected EquipItem(uint maxDurability, string name) : base(name) {
+            _durability = maxDurability;
+            _maxDurability = maxDurability;
+        }
 
         public void ReduceDurability(uint delta) => _durability -= delta;
 
