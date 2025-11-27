@@ -37,7 +37,7 @@ namespace GamePrototype.Units
                 if (items[i] is EconomicItem economicItem) 
                 {
                     UseEconomicItem(economicItem);
-                    Inventory.TryRemove(items[i]);
+                    if (Inventory.TryRemove(items[i])) i--;
                 }
             }
         }
@@ -57,6 +57,13 @@ namespace GamePrototype.Units
             if (economicItem is HealthPotion healthPotion) 
             {
                 Health += healthPotion.HealthRestore;
+            }
+            if (economicItem is Grindstone grindstone)
+            {
+                if(_equipment.TryGetValue(EquipSlot.Weapon, out var item) && item is Weapon weapon)
+                {
+                    weapon.Repair(grindstone.DurabilityRestore);
+                }
             }
         }
 
