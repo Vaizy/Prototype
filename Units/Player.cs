@@ -49,7 +49,22 @@ namespace GamePrototype.Units
                 // Item was equipped
                 return;
             }
+            if (item is EquipItem) {
+                ChangeEquipment((EquipItem) item);
+                return;
+            }
             base.AddItemToInventory(item);
+        }
+
+
+        private void ChangeEquipment(EquipItem item)
+        {
+            Console.WriteLine($"Change equipment {item.Slot}: {_equipment[item.Slot].Name} to {item.Name}?");
+            Console.WriteLine("1 - yes, 0 - no");
+            var answer = Int32.Parse(Console.ReadLine());
+            if (answer == 1) {
+                _equipment[item.Slot] = item;
+            }
         }
 
         private void UseEconomicItem(EconomicItem economicItem)

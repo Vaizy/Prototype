@@ -10,7 +10,10 @@ namespace GamePrototype.Utils
         {
             var player = new Player(name, 30, 30, 6);
             player.AddItemToInventory(new Weapon(10, 15, "Sword"));
+            player.AddItemToInventory(new Weapon(10, 20, "Long Sword"));
+            player.AddItemToInventory(new RangeWeapon(10, 15, "Bow"));
             player.AddItemToInventory(new Armour(10, 15, "Armour"));
+            player.AddItemToInventory(new Helmet(10, 15, "Helmet"));
             player.AddItemToInventory(new HealthPotion("Potion"));
             player.AddItemToInventory(new Grindstone("Grindstone"));
             return player;
